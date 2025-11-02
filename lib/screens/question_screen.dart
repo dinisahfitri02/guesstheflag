@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:guesstheflag/data/dummy_data.dart';
 import 'package:guesstheflag/models/question.dart';
 import '../widgets/app_scaffold.dart';
+import 'Result.dart';
+import 'package:guesstheflag/widgets/answer_button.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -11,8 +13,10 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  int currentIndex = 0; // index pertanyaan aktif
+  int currentIndex = 0;
   late Question currentQuestion;
+  bool answered = false;
+  String? selectedOption;
 
   @override
   void initState() {
@@ -47,7 +51,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       CircleAvatar(
                         backgroundColor: Colors.white,
                         child: Text(
-                          '${currentQuestion.id}',
+                          '${currentQuestion.id + 1}',
                           style: const TextStyle(color: Colors.black),
                         ),
                       ),
@@ -57,14 +61,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           child: LinearProgressIndicator(
                             value:
                             (currentIndex + 1) / DummyData.questionList.length,
-                            color: Colors.purple,
-                            backgroundColor: Colors.white54,
+                            color: const Color(0xFFA10D99),
+                            backgroundColor: Colors.white,
                             minHeight: 3,
                           ),
                         ),
                       ),
-                      const Icon(Icons.toggle_on,
-                          color: Colors.black87, size: 40),
                     ],
                   ),
 
@@ -101,41 +103,45 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   SizedBox(height: screenHeight * 0.1),
 
                   // Pilihan jawaban
-                  ...currentQuestion.options.map(
-                        (option) => Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: screenHeight * 0.01,
-                      ),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFA10D99),
-                          foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          minimumSize:
-                          Size(double.infinity, screenHeight * 0.07),
-                        ),
-                        onPressed: () {
+                  ...currentQuestion.options.map((option) {
+                    return AnswerButton(
+                      text: option,
+                      answered: answered,
+                      isCorrect: option == currentQuestion.answer,
+                      isSelected: selectedOption == option,
+                      onTap: () {
+                        setState(() {
+                          selectedOption = option;
+                          answered = true;
+                        });
+
+                        Future.delayed(const Duration(seconds: 2), () {
                           if (currentIndex < DummyData.questionList.length - 1) {
                             setState(() {
                               currentIndex++;
                               currentQuestion = DummyData.questionList[currentIndex];
+                              answered = false;
+                              selectedOption = null;
                             });
                           } else {
-                            //halaman hasil
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ResultScreen(
+                                  playerName: "Michele",
+                                  wrong: 5,
+                                  total: 15,
+                                ),
+                              ),
+                            );
                           }
-                        },
-                        child: Text(
-                          option,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                        });
+                      },
+                      buttonHeight: screenHeight * 0.07,
+                      screenWidth: screenWidth,
+                    );
+                  }).toList(),
+
                 ],
               ),
             ),

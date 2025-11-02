@@ -17,7 +17,7 @@ class GuessTheFlagApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Raleway',
       ),
-      home: const QuestionScreen(),
+      home: const HomeScreen(),
     );
   }
 }
