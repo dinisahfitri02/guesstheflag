@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guesstheflag/screens/Question_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class GuessTheFlagApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Raleway',
       ),
-      home: const HomeScreen(),
+      home: const QuestionScreen(),
     );
   }
 }
