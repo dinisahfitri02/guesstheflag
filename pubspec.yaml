@@ -55,11 +55,11 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-uses-material-design: true
+ uses-material-design: true
 
-assets:
-  - assets/flags
-  - assets/logo
+ assets:
+   - assets/flags/
+   - assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -72,18 +72,18 @@ assets:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-fonts:
-  - family: Raleway
-    fonts:
-      - asset: assets/fonts/Raleway-Regular.ttf
-      - asset: assets/fonts/Raleway-Medium.ttf
-        weight: 500
-      - asset: assets/fonts/Raleway-SemiBold.ttf
-        weight: 600
-      - asset: assets/fonts/Raleway-Bold.ttf
-        weight: 700
-      - asset: assets/fonts/Raleway-SemiBold.ttf
-        weight: 800
+ fonts:
+   - family: Raleway
+     fonts:
+       - asset: assets/fonts/Raleway-Regular.ttf
+       - asset: assets/fonts/Raleway-Medium.ttf
+         weight: 500
+       - asset: assets/fonts/Raleway-SemiBold.ttf
+         weight: 600
+       - asset: assets/fonts/Raleway-Bold.ttf
+         weight: 700
+       - asset: assets/fonts/Raleway-ExtraBold.ttf
+         weight: 800
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
