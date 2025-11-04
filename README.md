@@ -18,12 +18,26 @@ Players can enter their name, choose the number of questions, and see their fina
 
 **Application display:**
 **system theme light mode **
-| ![](preview/home_screen.jpg) | ![](preview/question_screen.jpg) | ![](preview/right_answer_screen.jpg) | ![](preview/wrong_answer_screen.jpg) | ![](preview/result_screen.jpg) |
+**Main user interface display:**
+
+**system theme dark mode**
+<p align="center">
+  <img src="preview/home_screen.jpg" width="150">
+  <img src="preview/question_screen.jpg" width="150">
+  <img src="preview/right_answer_screen.jpg" width="150">
+  <img src="preview/wrong_answer_screen.jpg" width="150">
+  <img src="preview/result_screen.jpg" width="150">
+</p>
 
 ---
 **system theme dark mode**
-| ![](preview/home_screen_dark.jpg) | ![](preview/right_answer_dark.jpg) | ![](preview/wrong_answer_dark.jpg) || ![](preview/result_dark.jpg) |
-
+<p align="center">
+  <img src="preview/home_screen_dark.jpg" width="150">
+  <img src="preview/question_screen_dark.jpg" width="150">
+  <img src="preview/right_answer_dark.jpg" width="150">
+  <img src="preview/wrong_answer_dark.jpg" width="150">
+  <img src="preview/result_dark.jpg" width="150">
+</p>
 
 
 **Mockup**
