@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guesstheflag/screens/Question_screen.dart';
+import 'package:guesstheflag/theme/theme_app.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -14,9 +15,9 @@ class GuessTheFlagApp extends StatelessWidget {
     return MaterialApp(
       title: 'Guess The Flag',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Raleway',
-      ),
+      themeMode: ThemeMode.system,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: const HomeScreen(),
     );
   }

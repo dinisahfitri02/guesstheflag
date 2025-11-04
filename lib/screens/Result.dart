@@ -40,7 +40,6 @@ class ResultScreen extends StatelessWidget {
                     'Great job, $playerName!',
                     style: TextStyle(
                       fontSize: screenWidth * (isLargeScreen ? 0.03 : 0.05),
-                      color: Colors.black,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
@@ -63,7 +62,6 @@ class ResultScreen extends StatelessWidget {
                     'Your final score',
                     style: TextStyle(
                       fontSize: screenWidth * 0.045,
-                      color: Colors.black,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -99,7 +97,6 @@ class ResultScreen extends StatelessWidget {
                         : 'Good job! Keep practicing your flags!',
                     style: TextStyle(
                       fontSize: screenWidth * 0.04,
-                      color: Colors.black,
                       fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.center,

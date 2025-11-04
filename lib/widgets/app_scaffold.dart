@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guesstheflag/widgets/solid_background.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
@@ -11,11 +10,9 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SolidBackground(
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: body,
-      ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // ikut theme
+      body: body,
     );
   }
 }

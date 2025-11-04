@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guesstheflag/widgets/logo_app.dart';
 import '../widgets/app_scaffold.dart';
 import 'package:guesstheflag/screens/question_screen.dart';
 
@@ -11,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _nameController = TextEditingController();
-  int? _selectedQuestions; // Menyimpan jumlah soal (5 atau 15)
+  int? _selectedQuestions; //jumlah Question
 
   @override
   void dispose() {
@@ -41,10 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: screenHeight * 0.05),
 
                     // logo
-                    Image.asset(
-                      'assets/logo/logo_app.png',
-                      width: screenWidth * 0.6,
-                    ),
+                    LogoApp(),
 
                     Text(
                       'Can you name the flags of the world?',
