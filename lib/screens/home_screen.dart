@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guesstheflag/provider/app_state_provider.dart';
 import 'package:provider/provider.dart';
-import '../widgets/app_scaffold.dart';
-import '../widgets/logo_app.dart';
+import 'package:guesstheflag/widgets/app_scaffold.dart';
+import 'package:guesstheflag/widgets/logo_app.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
