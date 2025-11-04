@@ -11,14 +11,6 @@ GuesstheFlag is an interactive quiz application that challenges players to ident
 The app is built with Flutter, featuring a clean and responsive design that automatically adapts to the device’s light or dark theme.
 Players can enter their name, choose the number of questions, and see their final score displayed at the end of the quiz.
 
-## Name Application
-**Guess The Flag**
-
-###Description
-GuesstheFlag is an interactive quiz application that challenges players to identify flags from countries around the world.
-The app is built with Flutter, featuring a clean and responsive design that automatically adapts to the device’s light or dark theme.
-Players can enter their name, choose the number of questions, and see their final score displayed at the end of the quiz.
-
 **Credit**
 - **Font:** Raleway [https://fonts.google.com/specimen/Raleway](https://fonts.google.com/specimen/Raleway)  
 - **Flags picture:** [CountryFlags.com](https://www.countryflags.com/)  
