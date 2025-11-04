@@ -49,7 +49,6 @@ class AnswerButton extends StatelessWidget {
               side: borderStyle,
             ),
             minimumSize: Size(double.infinity, buttonHeight),
-            elevation: 4,
           ),
           onPressed: onTap,
           child: Text(
@@ -73,13 +72,6 @@ class AnswerButton extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.circular(screenWidth * 0.05),
           border: Border.fromBorderSide(borderStyle),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 4,
-              offset: Offset(0, 2),
-            )
-          ],
         ),
         child: Text(
           text,

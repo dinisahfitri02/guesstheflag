@@ -11,31 +11,31 @@ class DummyData {
     const Question(
       id: 1,
       image: 'assets/flags/bahrain.jpg',
-      options: ['Bahrain', 'Qatar', 'Oman', 'UAE', 'Saudi Arabia'],
+      options: [ 'Qatar', 'Oman', 'UAE','Bahrain', 'Saudi Arabia'],
       answer: 'Bahrain',
     ),
     const Question(
       id: 2,
       image: 'assets/flags/cambodia.png',
-      options: ['Cambodia', 'Laos', 'Thailand', 'Vietnam', 'Myanmar'],
+      options: [ 'Laos', 'Thailand', 'Cambodia', 'Vietnam', 'Myanmar'],
       answer: 'Cambodia',
     ),
     const Question(
       id: 3,
       image: 'assets/flags/chile.png',
-      options: ['Chile', 'Argentina', 'Peru', 'Colombia', 'Ecuador'],
+      options: ['Argentina','Chile', 'Peru', 'Colombia', 'Ecuador'],
       answer: 'Chile',
     ),
     const Question(
       id: 4,
       image: 'assets/flags/finland.png',
-      options: ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland'],
+      options: ['Sweden', 'Norway', 'Denmark', 'Iceland','Finland'],
       answer: 'Finland',
     ),
     const Question(
       id: 5,
       image: 'assets/flags/malaysia.png',
-      options: ['Malaysia', 'Indonesia', 'Thailand', 'Brunei', 'Singapore'],
+      options: [ 'Indonesia', 'Malaysia', 'Thailand', 'Brunei', 'Singapore'],
       answer: 'Malaysia',
     ),
     const Question(
@@ -47,31 +47,31 @@ class DummyData {
     const Question(
       id: 7,
       image: 'assets/flags/myanmar.png',
-      options: ['Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Bangladesh'],
+      options: [ 'Thailand', 'Laos', 'Cambodia', 'Bangladesh', 'Myanmar'],
       answer: 'Myanmar',
     ),
     const Question(
       id: 8,
       image: 'assets/flags/north_korea.png',
-      options: ['North Korea', 'South Korea', 'China', 'Japan', 'Vietnam'],
+      options: [ 'China', 'Japan','North Korea', 'South Korea', 'Vietnam'],
       answer: 'North Korea',
     ),
     const Question(
       id: 9,
       image: 'assets/flags/oman.png',
-      options: ['Oman', 'Yemen', 'Qatar', 'Bahrain', 'UAE'],
+      options: ['Yemen', 'Oman',  'Qatar', 'Bahrain', 'UAE'],
       answer: 'Oman',
     ),
     const Question(
       id: 10,
       image: 'assets/flags/palestine.jpg',
-      options: ['Palestine', 'Jordan', 'Lebanon', 'Syria', 'Israel'],
+      options: [ 'Jordan', 'Lebanon', 'Syria', 'Palestine', 'Israel'],
       answer: 'Palestine',
     ),
     const Question(
       id: 11,
       image: 'assets/flags/poland.png',
-      options: ['Poland', 'Austria', 'Germany', 'Czech Republic', 'Slovakia'],
+      options: ['Poland', 'Austria', 'Germany', 'Belgium', 'Slovakia'],
       answer: 'Poland',
     ),
     const Question(
@@ -83,13 +83,13 @@ class DummyData {
     const Question(
       id: 13,
       image: 'assets/flags/spain.png',
-      options: ['Spain', 'Portugal', 'Italy', 'France', 'Belgium'],
+      options: ['Portugal', 'Italy', 'France', 'Spain', 'Belgium'],
       answer: 'Spain',
     ),
     const Question(
       id: 14,
       image: 'assets/flags/sri_lanka.png',
-      options: ['Sri Lanka', 'India', 'Bangladesh', 'Nepal', 'Pakistan'],
+      options: ['Bangladesh', 'Sri Lanka', 'India', 'Nepal', 'Pakistan'],
       answer: 'Sri Lanka',
     ),
   ];

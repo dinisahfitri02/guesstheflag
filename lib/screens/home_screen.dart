@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _buildQuestionButton(5, screenWidth),
+                        _buildQuestionButton(5 , screenWidth),
                         SizedBox(width: screenWidth * 0.1),
                         _buildQuestionButton(15, screenWidth),
                       ],
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: isSelected ? Colors.purple : const Color(0xFFA10D99),
+        backgroundColor: isSelected ? const Color(0xFFA101CD) : const Color(0xFFA10D99),
         foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),

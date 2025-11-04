@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:guesstheflag/widgets/solid_background.dart';
 
 class AppScaffold extends StatelessWidget {
-  final PreferredSizeWidget? appBar;
   final Widget body;
 
   const AppScaffold({
     super.key,
-    this.appBar,
     required this.body,
   });
 
@@ -16,7 +14,6 @@ class AppScaffold extends StatelessWidget {
     return SolidBackground(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: appBar,
         body: body,
       ),
     );
