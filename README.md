@@ -16,7 +16,14 @@ Players can enter their name, choose the number of questions, and see their fina
 - **Flags picture:** [CountryFlags.com](https://www.countryflags.com/)  
 - **Logo aplikasi** dibuat menggunakan elemen dari [Canva](https://www.canva.com/)
 
-**Tampilan antarmuka utama aplikasi:**
+**Application display:**
+**system theme light mode **
+| ![](preview/home_screen.jpg) | ![](preview/question_screen.jpg) | ![](preview/right_answer_screen.jpg) | ![](preview/wrong_answer_screen.jpg) | ![](preview/result_screen.jpg) |
+
+---
+**system theme dark mode**
+| ![](preview/home_screen_dark.jpg) | ![](preview/right_answer_dark.jpg) | ![](preview/wrong_answer_dark.jpg) || ![](preview/result_dark.jpg) |
+
 
 
 **Mockup**
