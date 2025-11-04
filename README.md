@@ -1,6 +1,8 @@
 
-Nama : Dini Sahfitri
-Nim : 231401033
+Nama : Dini Sahfitri 
+
+Nim : 231401033 
+
 Lab 5 Pemrograman Mobile
 
 ##GuesstheFlag
