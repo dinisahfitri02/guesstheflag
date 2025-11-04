@@ -9,16 +9,28 @@ Lab 5 Pemrograman Mobile
 
 GuesstheFlag is an interactive quiz application that challenges players to identify flags from countries around the world.
 The app is built with Flutter, featuring a clean and responsive design that automatically adapts to the device’s light or dark theme.
-
 Players can enter their name, choose the number of questions, and see their final score displayed at the end of the quiz.
 
-This project is a starting point for a Flutter application.
+# Guess The Flag 🇺🇳
 
-A few resources to get you started if this is your first Flutter project:
+## Name Application
+**Guess The Flag**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Description
+GuesstheFlag is an interactive quiz application that challenges players to identify flags from countries around the world.
+The app is built with Flutter, featuring a clean and responsive design that automatically adapts to the device’s light or dark theme.
+Players can enter their name, choose the number of questions, and see their final score displayed at the end of the quiz.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🙌 Credit
+- **Font:** [Raleway](https://fonts.google.com/specimen/Raleway)  
+- **Flags picture:** [CountryFlags.com](https://www.countryflags.com/)  
+- **Logo aplikasi** dibuat menggunakan elemen dari [Canva](https://www.canva.com/)
+
+## 📸 Screenshot / Video Aplikasi
+Tampilan antarmuka utama aplikasi:
+
+
+## Mockup 
+Mockup desain aplikasi dapat dilihat di Figma:  
+[🔗 Lihat di Figma](https://www.figma.com/design/zA7HYIt2FONQ9KJGnWmY3Q/GuesstheFlag?node-id=0-1&t=1jJ21NJKZgLjFZ9C-1)  
+
