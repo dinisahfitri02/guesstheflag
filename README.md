@@ -1,8 +1,16 @@
-# guesstheflag
 
-A new Flutter project.
+Nama : Dini Sahfitri 
 
-## Getting Started
+Nim : 231401033 
+
+Lab 5 Pemrograman Mobile
+
+##GuesstheFlag
+
+GuesstheFlag is an interactive quiz application that challenges players to identify flags from countries around the world.
+The app is built with Flutter, featuring a clean and responsive design that automatically adapts to the device’s light or dark theme.
+
+Players can enter their name, choose the number of questions, and see their final score displayed at the end of the quiz.
 
 This project is a starting point for a Flutter application.
 
