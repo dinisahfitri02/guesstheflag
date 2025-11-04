@@ -6,7 +6,14 @@ import 'Result.dart';
 import 'package:guesstheflag/widgets/answer_button.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  final String playerName;
+  final int totalQuestions;
+
+  const QuestionScreen({
+    super.key,
+    required this.playerName,
+    required this.totalQuestions,
+  });
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -14,14 +21,57 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   int currentIndex = 0;
+  late List<Question> _questions;
   late Question currentQuestion;
   bool answered = false;
   String? selectedOption;
+  int correct = 0; // menghitung jawaban benar
+  int wrong = 0;   // menghitung jawaban salah
 
   @override
   void initState() {
     super.initState();
-    currentQuestion = DummyData.questionList[currentIndex];
+    // Ambil jumlah soal sesuai pilihan user
+    _questions = DummyData.questionList.take(widget.totalQuestions).toList();
+    currentQuestion = _questions[currentIndex];
+  }
+
+  void _nextQuestion(String option) {
+    // Cek apakah benar
+    if (option == currentQuestion.answer) {
+      correct++;
+    } else {
+      wrong++;
+    }
+
+    setState(() {
+      answered = true;
+      selectedOption = option;
+    });
+
+    // Lanjut ke soal berikut setelah delay 1.5 detik
+    Future.delayed(const Duration(seconds: 2), () {
+      if (currentIndex < _questions.length - 1) {
+        setState(() {
+          currentIndex++;
+          currentQuestion = _questions[currentIndex];
+          answered = false;
+          selectedOption = null;
+        });
+      } else {
+        // Semua soal selesai → pindah ke ResultScreen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultScreen(
+              playerName: widget.playerName,
+              wrong: wrong,
+              total: widget.totalQuestions,
+            ),
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -44,14 +94,14 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 children: [
                   SizedBox(height: screenHeight * 0.07),
 
-                  //number Quest
+                  // Nomor soal dan progress bar
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CircleAvatar(
                         backgroundColor: Colors.white,
                         child: Text(
-                          '${currentQuestion.id + 1}',
+                          '${currentIndex + 1}',
                           style: const TextStyle(color: Colors.black),
                         ),
                       ),
@@ -59,8 +109,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         child: Padding(
                           padding: EdgeInsets.only(left: screenWidth * 0.04),
                           child: LinearProgressIndicator(
-                            value:
-                            (currentIndex + 1) / DummyData.questionList.length,
+                            value: (currentIndex + 1) / _questions.length,
                             color: const Color(0xFFA10D99),
                             backgroundColor: Colors.white,
                             minHeight: 3,
@@ -72,7 +121,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
                   SizedBox(height: screenHeight * 0.05),
 
-                  //flag
+                  // Gambar bendera
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -109,39 +158,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       answered: answered,
                       isCorrect: option == currentQuestion.answer,
                       isSelected: selectedOption == option,
-                      onTap: () {
-                        setState(() {
-                          selectedOption = option;
-                          answered = true;
-                        });
-
-                        Future.delayed(const Duration(seconds: 2), () {
-                          if (currentIndex < DummyData.questionList.length - 1) {
-                            setState(() {
-                              currentIndex++;
-                              currentQuestion = DummyData.questionList[currentIndex];
-                              answered = false;
-                              selectedOption = null;
-                            });
-                          } else {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ResultScreen(
-                                  playerName: "Michele",
-                                  wrong: 5,
-                                  total: 15,
-                                ),
-                              ),
-                            );
-                          }
-                        });
-                      },
+                      onTap: answered ? null : () => _nextQuestion(option),
                       buttonHeight: screenHeight * 0.07,
                       screenWidth: screenWidth,
                     );
                   }).toList(),
-
                 ],
               ),
             ),

@@ -5,7 +5,7 @@ class AnswerButton extends StatelessWidget {
   final bool answered;
   final bool isCorrect;
   final bool isSelected;
-  final VoidCallback onTap;
+  final Function()? onTap;
   final double buttonHeight;
   final double screenWidth;
 

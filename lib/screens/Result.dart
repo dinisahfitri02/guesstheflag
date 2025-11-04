@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_scaffold.dart';
+import 'package:guesstheflag/screens/home_screen.dart';
 
 class ResultScreen extends StatelessWidget {
   final String playerName;
@@ -19,7 +20,7 @@ class ResultScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final isLargeScreen = screenWidth > 600;
 
-    // Hitung skor
+    // Hitung skor dalam persen
     double percentage = 100 - ((wrong / total) * 100);
 
     return AppScaffold(
@@ -33,6 +34,8 @@ class ResultScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: screenHeight * 0.05),
+
+                  // Teks sambutan
                   Text(
                     'Great job, $playerName!',
                     style: TextStyle(
@@ -45,7 +48,7 @@ class ResultScreen extends StatelessWidget {
 
                   SizedBox(height: screenHeight * 0.04),
 
-                  // Medali
+                  // Gambar medali
                   Image.asset(
                     percentage >= 70
                         ? 'assets/logo/gold_medal.png'
@@ -55,7 +58,7 @@ class ResultScreen extends StatelessWidget {
 
                   SizedBox(height: screenHeight * 0.1),
 
-                  // final skor
+                  // Label skor
                   Text(
                     'Your final score',
                     style: TextStyle(
@@ -67,7 +70,7 @@ class ResultScreen extends StatelessWidget {
 
                   SizedBox(height: screenHeight * 0.015),
 
-                  // Nilai skor
+                  // Nilai skor akhir
                   Container(
                     padding: EdgeInsets.symmetric(
                       vertical: screenHeight * 0.012,
@@ -78,7 +81,7 @@ class ResultScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(screenWidth * 0.01),
                     ),
                     child: Text(
-                      '${(percentage).toStringAsFixed(0)}/100',
+                      '${percentage.toStringAsFixed(0)}/100',
                       style: TextStyle(
                         fontSize: screenWidth * 0.055,
                         fontWeight: FontWeight.w700,
@@ -89,7 +92,7 @@ class ResultScreen extends StatelessWidget {
 
                   SizedBox(height: screenHeight * 0.03),
 
-                  // Pesan
+                  // Pesan motivasi
                   Text(
                     percentage >= 70
                         ? 'Excellent! You really know the flags!'
@@ -104,13 +107,19 @@ class ResultScreen extends StatelessWidget {
 
                   SizedBox(height: screenHeight * 0.08),
 
-                  // Tombol Try Again
+                  // Tombol kembali ke Home
                   SizedBox(
                     width: screenWidth * 0.4,
                     height: screenHeight * 0.075,
                     child: ElevatedButton(
                       onPressed: () {
-                        // kembali ke home
+                        // Navigasi balik ke HomeScreen
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()),
+                              (route) => false,
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFA10D99),
@@ -130,6 +139,7 @@ class ResultScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+
                   SizedBox(height: screenHeight * 0.05),
                 ],
               ),
