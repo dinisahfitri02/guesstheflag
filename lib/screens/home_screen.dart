@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:guesstheflag/widgets/logo_app.dart';
+import 'package:go_router/go_router.dart';
+import 'package:guesstheflag/provider/app_state_provider.dart';
+import 'package:provider/provider.dart';
 import '../widgets/app_scaffold.dart';
-import 'package:guesstheflag/screens/question_screen.dart';
+import '../widgets/logo_app.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _nameController = TextEditingController();
-  int? _selectedQuestions; //jumlah Question
+  int? _selectedQuestions;
 
   @override
   void dispose() {
@@ -40,10 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(height: screenHeight * 0.05),
-
-                    // logo
                     LogoApp(),
-
                     Text(
                       'Can you name the flags of the world?',
                       style: TextStyle(
@@ -52,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-
                     SizedBox(height: screenHeight * 0.1),
 
                     Text(
@@ -60,67 +58,55 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: screenWidth * (isLargeScreen ? 0.03 : 0.06),
                       ),
-                      textAlign: TextAlign.center,
                     ),
-
                     SizedBox(height: screenHeight * 0.01),
-
-                    // Name TextField
-                    Container(
-                      width: screenWidth * 0.8,
-                      child: TextField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          hintText: "Your name",
-                          hintStyle: TextStyle(
-                            fontSize: screenWidth * 0.05,
-                            color: Colors.black,
-                          ),
-                          filled: true,
-                          fillColor: const Color(0xFFA10D99),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(screenWidth * 0.03),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: screenHeight * 0.025,
-                            horizontal: screenWidth * 0.055,
-                          ),
-                        ),
-                        style: TextStyle(
+                    TextField(
+                      controller: _nameController,
+                      decoration: InputDecoration(
+                        hintText: "Your name",
+                        hintStyle: TextStyle(
                           fontSize: screenWidth * 0.05,
                           color: Colors.black,
                         ),
-                        keyboardType: TextInputType.name,
-                        textAlign: TextAlign.center,
+                        filled: true,
+                        fillColor: const Color(0xFFA10D99),
+                        border: OutlineInputBorder(
+                          borderRadius:
+                          BorderRadius.circular(screenWidth * 0.03),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: screenHeight * 0.025,
+                          horizontal: screenWidth * 0.055,
+                        ),
+                      ),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.05,
+                        color: Colors.black,
                       ),
                     ),
 
                     SizedBox(height: screenHeight * 0.03),
-
                     Text(
                       'Number Of Questions',
                       style: TextStyle(
                         fontSize: screenWidth * (isLargeScreen ? 0.02 : 0.04),
                       ),
-                      textAlign: TextAlign.center,
                     ),
-
                     SizedBox(height: screenHeight * 0.03),
 
-                    //pilihan jumlah soal
+                    // jumlah soal
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _buildQuestionButton(5 , screenWidth),
+                        _buildQuestionButton(5, screenWidth),
                         SizedBox(width: screenWidth * 0.1),
                         _buildQuestionButton(15, screenWidth),
                       ],
                     ),
 
                     SizedBox(height: screenHeight * 0.03),
-
-                    //Start
                     SizedBox(
                       width: screenWidth * 0.3,
                       height: screenHeight * 0.075,
@@ -129,34 +115,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           final name = _nameController.text.trim();
                           if (name.isEmpty || _selectedQuestions == null) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: const Text(
+                              const SnackBar(
+                                content: Text(
                                   "Please enter your name and choose number of questions",
                                   textAlign: TextAlign.center,
                                 ),
                                 behavior: SnackBarBehavior.floating,
-                                backgroundColor: Colors.red,
-                                margin: const EdgeInsets.only(
-                                  top: 1,
-                                  left: 40,
-                                  right: 40,
-                                ),
-                                duration: const Duration(seconds: 2),
                               ),
                             );
                             return;
                           }
-
-                          // Navigasi ke QuestionScreen
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => QuestionScreen(
-                                playerName: name,
-                                totalQuestions: _selectedQuestions!,
-                              ),
-                            ),
-                          );
+                          context
+                              .read<AppStateProvider>()
+                              .setPlayer(name, _selectedQuestions!);
+                          context.go('/question');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFA10D99),
@@ -164,8 +136,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),
-                          elevation: 10,
-                          shadowColor: Colors.black,
                         ),
                         child: Text(
                           'S t a r t',
@@ -186,24 +156,20 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Widget untuk tombol pilihan jumlah soal
   Widget _buildQuestionButton(int number, double screenWidth) {
     final isSelected = _selectedQuestions == number;
     return ElevatedButton(
       onPressed: () {
-        setState(() {
-          _selectedQuestions = number;
-        });
+        setState(() => _selectedQuestions = number);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: isSelected ? const Color(0xFFA101CD) : const Color(0xFFA10D99),
+        backgroundColor:
+        isSelected ? const Color(0xFFA101CD) : const Color(0xFFA10D99),
         foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.all(screenWidth * 0.08),
-        elevation: 4,
-        shadowColor: Colors.black,
       ),
       child: Text(
         '$number',
